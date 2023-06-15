@@ -2,7 +2,10 @@ module github.com/Jonathansoufer/go-distributed-cache-pub-sub-redis
 
 go 1.20
 
-require github.com/go-redis/redis/v8 v8.11.5
+require (
+	github.com/go-redis/redis/v8 v8.11.5
+	github.com/golang/mock v1.6.0
+)
 
 require (
 	github.com/cespare/xxhash/v2 v2.1.2 // indirect

@@ -1,7 +1,6 @@
 package main
 
 import (
-	"context"
 	"log"
 
 	"github.com/go-redis/redis/v8"
@@ -14,7 +13,7 @@ func main() {
 		DB:       0,
 	})
 
-	ctx := context.Background()
+	ctx := client.Context()
 	sub := client.Subscribe(ctx, "chan1")
 
 	for {

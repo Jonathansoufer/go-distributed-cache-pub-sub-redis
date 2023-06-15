@@ -1,7 +1,6 @@
 package main
 
 import (
-	"context"
 	"log"
 	"time"
 
@@ -15,7 +14,7 @@ func main() {
 		DB:       0,
 	})
 
-	ctx := context.Background()
+	ctx := client.Context()
 	for {
 		if err := client.Publish(ctx, "chan1", "Hello World").Err(); err != nil {
 			log.Fatal(err)
