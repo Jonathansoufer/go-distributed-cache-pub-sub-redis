@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"log"
-	"time"
 
 	"github.com/go-redis/redis/v8"
 )
@@ -16,10 +15,15 @@ func main() {
 	})
 
 	ctx := context.Background()
+	sub := client.Subscribe(ctx, "chan1")
+
 	for {
-		if err := client.Publish(ctx, "chan1", "Hello World").Err(); err != nil {
+		msg, err := sub.ReceiveMessage(ctx)
+		if err != nil {
 			log.Fatal(err)
 		}
-		time.Sleep(1 * time.Second)
+
+		log.Println(msg.Payload)
 	}
+
 }
